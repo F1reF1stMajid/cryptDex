@@ -395,8 +395,17 @@ button:active {
 
 /* Responsive Mobile Styles */
 @media (max-width: 600px) {
+  #root {
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .app {
-    padding: 1.5rem;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
   }
 
   .crypto-list {
