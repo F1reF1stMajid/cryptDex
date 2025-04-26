@@ -397,12 +397,14 @@ button:active {
 @media (max-width: 600px) {
   #root {
     text-align: center;
+    margin: 0; /* <-- ADD THIS */
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
   .app {
     max-width: 100%;
+    margin: 0; /* <-- ADD THIS */
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
