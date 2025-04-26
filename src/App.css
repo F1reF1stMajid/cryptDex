@@ -1,0 +1,507 @@
+/* Global Styles */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #28a745;
+  --light-bg: #f8f9fa;
+  --dark-bg: #212529;
+  --light-text: #f8f9fa;
+  --dark-text: #343a40;
+  --card-light: #ffffff;
+  --card-dark: #343a40;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Toggle Switch (Optional - Add HTML for this) */
+.dark-mode-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.dark-mode-switch input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.dark-mode-switch label {
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background: var(--secondary-color);
+  display: block;
+  border-radius: 25px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode-switch label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 21px;
+  height: 21px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s ease;
+}
+
+.dark-mode-switch input:checked + label {
+  background: var(--primary-color);
+}
+
+.dark-mode-switch input:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+body.dark-mode .title {
+  color: var(--light-text);
+}
+
+body.dark-mode .logo {
+  filter: drop-shadow(0 0 1.5em var(--light-text));
+}
+
+body.dark-mode .logo.react {
+  filter: drop-shadow(0 0 1.5em #61dafb);
+}
+
+body.dark-mode .crypto-card {
+  background-color: var(--card-dark);
+  color: var(--light-text);
+  box-shadow: 0 6px 18px var(--shadow-dark);
+  border: 1px solid #444; /* Subtle border for definition */
+}
+
+body.dark-mode .crypto-card h3 {
+  color: var(--light-text);
+}
+
+body.dark-mode button {
+  background: linear-gradient(145deg, #3d4857, #4a576a);
+  color: var(--light-text);
+  box-shadow: 0 4px 10px var(--shadow-dark);
+}
+
+body.dark-mode button:hover {
+  background: linear-gradient(145deg, #4a576a, #5e6e81);
+  box-shadow: 0 6px 15px var(--shadow-dark);
+}
+
+body.dark-mode .pagination button {
+  background-color: #444;
+  color: var(--light-text);
+  border-color: #555;
+}
+
+body.dark-mode .pagination button:hover {
+  background-color: #555;
+  color: var(--light-text);
+}
+
+body.dark-mode .price-change.positive {
+  color: #2ecc71;
+}
+
+body.dark-mode .price-change.negative {
+  color: #e74c3c;
+}
+
+body.dark-mode .error-message {
+  color: #e74c3c;
+}
+
+body.dark-mode .pagination button {
+  color: var(--light-text);
+  border-color: #555;
+}
+
+body.dark-mode .pagination button:hover {
+  background-color: #555;
+  color: var(--light-text);
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  color: var(--light-text);
+  background-color: #444;
+  border-color: #555;
+}
+
+/* Light Mode Styles (White card title) */
+body.light-mode {
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+body.light-mode .title {
+  color: var(--dark-text);
+}
+
+body.light-mode .crypto-card {
+  background-color: var(--card-light);
+  color: var(--dark-text); /* Default card text color in light mode */
+  box-shadow: 0 6px 15px var(--shadow-light);
+  border: 1px solid #eee; /* Subtle border for definition */
+}
+
+body.light-mode .crypto-card h3 {
+  color: white; /* Explicitly set card title to white in light mode */
+}
+
+body.light-mode button {
+  background: linear-gradient(135deg, var(--primary-color), #56ccf2); /* Brighter gradient */
+  color: white;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+body.light-mode button:hover {
+  background: linear-gradient(135deg, #2980b9, #4ecdc4); /* Different hover gradient */
+  box-shadow: 0 6px 18px var(--shadow-light);
+}
+
+body.light-mode .pagination button {
+  background-color: #fff;
+  color: var(--dark-text);
+  border-color: #ccc;
+}
+
+body.light-mode .pagination button:hover {
+  background-color: #eee;
+}
+
+body.light-mode .price-change.positive {
+  color: #2ecc71;
+}
+
+body.light-mode .price-change.negative {
+  color: #e74c3c;
+}
+
+body.light-mode .error-message {
+  color: #e74c3c;
+}
+
+body.light-mode input,
+body.light-mode select {
+  color: var(--dark-text);
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* Title Styling (General) */
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo {
+  height: 5em;
+  padding: 1em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 1.5em var(--primary-color));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 1.5em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Crypto Card Styling */
+.crypto-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow-light);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+  background-color: var(--card-light);
+  position: relative;
+}
+
+.crypto-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 12px 12px 0 0;
+}
+
+.crypto-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: rgb(50, 50, 50);
+}
+
+.crypto-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.crypto-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 15px 40px var(--shadow-light);
+}
+
+/* Buttons Styling */
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary-color), #64b5f6);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 6px 12px var(--shadow-light);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px var(--shadow-light);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+/* Price Change Styling */
+.price-change {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.price-change.positive {
+  color: #2ecc71;
+}
+
+.price-change.negative {
+  color: #e74c3c;
+}
+
+/* Spinner Animation */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+  margin: 25px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 25px;
+  font-weight: 500;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  color: var(--dark-text);
+}
+
+.pagination button {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-color);
+  background-color: #fff;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination button:active {
+  transform: translateY(1px);
+}
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Mobile Styles */
+@media (max-width: 600px) {
+  .app {
+    padding: 1.5rem;
+  }
+
+  .crypto-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .crypto-card {
+    padding: 1.2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  input,
+  select {
+    width: calc(100% - 1rem);
+    margin: 0.5rem 0;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .pagination {
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .pagination button {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Root Layout */
+#root {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+/* App Layout */
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: var(--dark-text);
+  text-align: center;
+}
+
+/* Heading Styles */
+h2,
+h3 {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: var(--light-text);
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+/* Crypto Grid */
+.crypto-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+/* Inputs & Selects */
+input,
+select {
+  margin: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  color: var(--dark-text);
+  background-color: #fff;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  color: var(--light-text);
+  background-color: #444;
+  border-color: #555;
+}
+
+/* Mini Chart */
+.mini-chart {
+  width: 100%;
+  max-width: 180px;
+  height: 60px;
+  margin: 12px 0;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.15));
+}
