@@ -396,7 +396,6 @@ button:active {
 /* Responsive Mobile Styles */
 @media (max-width: 600px) {
   #root {
-    text-align: center;
     margin: 0; /* <-- ADD THIS */
     padding-left: 1rem;
     padding-right: 1rem;
@@ -407,6 +406,9 @@ button:active {
     margin: 0; /* <-- ADD THIS */
     padding-left: 1rem;
     padding-right: 1rem;
+    
+  }
+  .title{
     text-align: center;
   }
 
@@ -453,7 +455,7 @@ button:active {
   max-width: 1300px;
   margin: 0 auto;
   padding: 2.5rem;
-  text-align: center;
+ 
 }
 
 /* App Layout */
@@ -463,7 +465,7 @@ button:active {
   padding: 2.5rem;
   font-family: 'Segoe UI', 'Arial', sans-serif;
   color: var(--dark-text);
-  text-align: center;
+  
 }
 
 /* Heading Styles */
@@ -515,4 +517,22 @@ body.dark-mode select {
   margin: 12px 0;
   object-fit: contain;
   filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.15));
+}
+/* Favorite Heart Icon */
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+.favorite-button:hover {
+  color: var(--primary-color);
+}
+
+.favorite-button.favorited {
+  color: var(--accent-color);
 }
